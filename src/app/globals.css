@@ -2,21 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -25,3 +11,81 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  :root {
+    --background: 245 70% 98%; /* #FAF6FF */
+    --foreground: 240 20% 10%; /* Dark gray for readability */
+    
+    --primary: 250 85% 76%; /* #A594F9 */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+  
+    --secondary: 245 90% 70%; /* #7371FC */
+    --secondary-foreground: 0 0% 100%; /* White text on secondary */
+  
+    --accent: 250 70% 85%; /* #CDC1FF */
+    --accent-foreground: 240 20% 10%;
+  
+    --muted: 260 50% 90%; /* #E5D9F2 */
+    --muted-foreground: 250 30% 30%; 
+  
+    --border: var(--accent);
+    --ring: var(--secondary);
+
+    --primary-hover: 250 85% 70%; /* Darker shade of primary */
+    --secondary-hover: 245 90% 60%; /* Darker secondary */
+
+  }
+  
+  /* === Dark Mode === */
+  .dark {
+    --background: 250 30% 10%; /* #1C1B29 */
+    --foreground: 250 50% 85%; /* #E5D9F2 */
+  
+    --primary: 250 70% 80%; /* #CDC1FF */
+    --primary-foreground: 250 30% 20%;
+  
+    --secondary: 250 80% 72%; /* #A594F9 */
+    --secondary-foreground: 0 0% 100%;
+  
+    --accent: 245 90% 65%; /* #7371FC */
+    --accent-foreground: 0 0% 100%;
+  
+    --muted: 250 25% 12%; /* #1E1C30 */
+    --muted-foreground: 250 60% 80%;
+  
+    --border: var(--accent);
+    --ring: var(--secondary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body Styling === */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", sans-serif;
+}
+
+/* === Smooth Dark Mode Transition === */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+nav:hover {
+  transform: translateY(0);
+}
+
